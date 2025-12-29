@@ -5,7 +5,7 @@ import { Toaster } from '@/components/ui/toaster';
 import Header from '@/components/layout/header';
 
 export const metadata: Metadata = {
-  title: 'SwiftChat',
+  title: 'Mano India',
   description: 'An intelligent chatbot assistant',
 };
 

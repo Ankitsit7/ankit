@@ -11,7 +11,7 @@ const initialMessages: Message[] = [
     {
       id: nanoid(),
       role: 'assistant',
-      content: "Hello! I'm SwiftChat, your intelligent assistant. How can I help you today?",
+      content: "Hello! I'm Mano India, your intelligent assistant. How can I help you today?",
       createdAt: new Date(),
     },
 ];
