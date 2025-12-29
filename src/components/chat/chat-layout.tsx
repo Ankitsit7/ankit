@@ -11,7 +11,7 @@ const initialMessages: Message[] = [
     {
       id: nanoid(),
       role: 'assistant',
-      content: "Hello! I'm Mano India, your intelligent assistant. How can I help you today?",
+      content: "Hello! I'm Mano, your intelligent assistant from Manoindia. I can help you with waste management solutions. How can I assist you today?",
       createdAt: new Date(),
     },
 ];

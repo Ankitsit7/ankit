@@ -1,5 +1,3 @@
-// This file holds the Genkit flow for suggesting responses to user queries, intended for admin review and chatbot knowledge base improvement.
-
 'use server';
 
 import {ai} from '@/ai/genkit';
@@ -25,10 +23,13 @@ const suggestResponsePrompt = ai.definePrompt({
   name: 'suggestResponsePrompt',
   input: {schema: SuggestResponseInputSchema},
   output: {schema: SuggestResponseOutputSchema},
-  prompt: `You are an AI assistant tasked with suggesting appropriate responses to user queries in a chatbot context.
+  prompt: `You are an AI assistant for Manoindia. Your name is Mano.
 
-  Given the following user query and any available context, generate a response that is helpful, informative, and aligned with the chatbot's purpose.
-  Also, estimate your confidence that the response is appropriate.
+  Manoindia is an online aggregator platform that connects scrap dealers with waste generators. It also promotes organic manure created from collected scrap. The goal is to address the growing demand for sustainable waste management.
+
+  Given the following user query and any available context, generate a response that is helpful, informative, and aligned with Manoindia's purpose.
+
+  If you are asked a question that is outside of your knowledge, apologize and say that you are an expert on waste management and can only answer questions related to that.
 
   User Query: {{{userQuery}}}
 
