@@ -30,12 +30,18 @@ export async function getBotResponse(userQuery: string, history: Message[]): Pro
 
   try {
     // Artificial delay to simulate network request
-    await new Promise(resolve => setTimeout(resolve, 500));
+    await new Promise(resolve => setTimeout(resolve, 1200));
     
+    // Simulate a failure for demonstration
+    if (userQuery.toLowerCase().includes('fail')) {
+        throw new Error("Simulated backend error");
+    }
+
     const responseContent = findResponse(userQuery);
     return responseContent;
   } catch (error) {
     console.error('Error getting bot response:', error);
-    return "I'm sorry, I encountered an error. Please try again.";
+    // Re-throw the error to be handled by the UI
+    throw error;
   }
 }

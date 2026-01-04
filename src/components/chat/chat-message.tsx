@@ -24,9 +24,9 @@ export default function ChatMessage({ message }: ChatMessageProps) {
       )}
       <div
         className={cn(
-          'max-w-xs md:max-w-md lg:max-w-lg rounded-lg p-3 text-sm shadow-sm',
+          'max-w-[70%] rounded-2xl p-3 text-sm shadow-sm leading-relaxed',
           isUser
-            ? 'bg-primary text-primary-foreground'
+            ? 'bg-primary text-primary-foreground font-medium'
             : 'bg-card border',
         )}
       >

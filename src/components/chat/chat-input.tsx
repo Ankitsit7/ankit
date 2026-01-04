@@ -37,7 +37,7 @@ export default function ChatInput({ onSendMessage, isPending }: ChatInputProps) 
           value={content}
           onChange={(e) => setContent(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder="Type your message..."
+          placeholder="Type your question here..."
           className="min-h-0 resize-none"
           rows={1}
           disabled={isPending}

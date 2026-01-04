@@ -6,12 +6,14 @@ import type { Message } from '@/lib/types';
 import ChatPanel from './chat-panel';
 import { getBotResponse } from '@/app/actions';
 import { useToast } from '@/hooks/use-toast';
+import { Button } from '@/components/ui/button';
+import { RefreshCcw, AlertTriangle } from 'lucide-react';
 
 const initialMessages: Message[] = [
     {
       id: nanoid(),
       role: 'assistant',
-      content: "Hello! I'm Mano, your intelligent assistant from Manoindia. I can help you with waste management solutions. How can I assist you today?",
+      content: "👋 Hi! I’m the Manoindia Assistant.\nI can help you with:\n- Scrap pickup\n- Organic manure\n- Pricing & process",
       createdAt: new Date(),
     },
 ];
@@ -19,10 +21,12 @@ const initialMessages: Message[] = [
 export default function ChatLayout() {
   const [messages, setMessages] = useState<Message[]>(initialMessages);
   const [isPending, setIsPending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const { toast } = useToast();
 
   const addMessage = (message: Message) => {
     setMessages((prev) => [...prev, message]);
+    setError(null); // Clear error on new message
   };
 
   const handleSendMessage = async (content: string) => {
@@ -45,24 +49,36 @@ export default function ChatLayout() {
         createdAt: new Date(),
       };
       addMessage(assistantMessage);
-    } catch (error) {
-      console.error('Error getting bot response:', error);
-      toast({
-        title: 'Error',
-        description: 'Failed to get a response from the bot. Please try again.',
-        variant: 'destructive',
-      });
+    } catch (e) {
+      console.error('Error getting bot response:', e);
+      setError("😕 Oops! I had trouble answering that.");
     } finally {
       setIsPending(false);
     }
   };
+
+  const retryLastMessage = () => {
+    const lastUserMessage = messages.slice().reverse().find(m => m.role === 'user');
+    if (lastUserMessage) {
+      setError(null);
+      handleSendMessage(lastUserMessage.content);
+    }
+  }
+
+  const resetChat = () => {
+    setMessages(initialMessages);
+    setError(null);
+  }
 
   return (
     <div className="container mx-auto max-w-3xl py-8">
         <ChatPanel 
           messages={messages}
           isPending={isPending}
-          onSendMessage={handleSendMessage} 
+          onSendMessage={handleSendMessage}
+          error={error}
+          retryLastMessage={retryLastMessage}
+          resetChat={resetChat}
         />
     </div>
   );
