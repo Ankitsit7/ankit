@@ -13,14 +13,6 @@ export default function Header() {
               Mano India
             </span>
           </Link>
-          <nav className="flex items-center gap-6 text-sm">
-            <Link
-              href="/admin"
-              className="text-foreground/60 transition-colors hover:text-foreground/80"
-            >
-              Admin
-            </Link>
-          </nav>
         </div>
         <div className="flex flex-1 items-center justify-end space-x-2">
            
