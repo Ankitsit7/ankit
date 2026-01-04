@@ -7,7 +7,7 @@ import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
 import ChatMessage from './chat-message';
 import ChatInput from './chat-input';
 import { Button } from '../ui/button';
-import { Bot, RefreshCcw, Home, Phone, Recycle, Leaf } from 'lucide-react';
+import { Bot, RefreshCcw, Home, Phone, Recycle, TreeDeciduous } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '../ui/alert';
 
 interface ChatPanelProps {
@@ -21,7 +21,7 @@ interface ChatPanelProps {
 
 const quickReplies = [
   { display: "Scrap Pickup", value: "Tell me about scrap pickup", icon: Recycle },
-  { display: "Organic Manure", value: "Where can I buy organic manure?", icon: Leaf },
+  { display: "Organic Manure", value: "Where can I buy organic manure?", icon: TreeDeciduous },
   { display: "Contact Support", value: "How can I contact support?", icon: Phone },
 ];
 
