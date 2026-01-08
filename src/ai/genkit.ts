@@ -1,7 +1,7 @@
-import {genkit} from 'genkit';
-import {googleAI} from '@genkit-ai/google-genai';
+import os
+import openai
 
-export const ai = genkit({
-  plugins: [googleAI()],
-  model: 'googleai/gemini-2.5-flash',
-});
+client = openai.OpenAI(
+  base_url="https://api.groq.com/openai/v1",
+  api_key=os.environ.get("GROQ_API_KEY")
+)
